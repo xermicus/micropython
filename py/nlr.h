@@ -45,6 +45,7 @@
 #define MICROPY_NLR_NUM_REGS_XTENSA         (10)
 #define MICROPY_NLR_NUM_REGS_XTENSAWIN      (17)
 #define MICROPY_NLR_NUM_REGS_RV32I          (14)
+#define MICROPY_NLR_NUM_REGS_RV32E          (4)
 
 // *FORMAT-OFF*
 
@@ -89,6 +90,9 @@
 #elif defined(__mips__)
     #define MICROPY_NLR_MIPS (1)
     #define MICROPY_NLR_NUM_REGS (MICROPY_NLR_NUM_REGS_MIPS)
+#elif defined(__riscv) && defined(__riscv_32e)
+    #define MICROPY_NLR_RV32E (1)
+    #define MICROPY_NLR_NUM_REGS (MICROPY_NLR_NUM_REGS_RV32E)
 #elif defined(__riscv) && defined(__riscv_xlen) && (__riscv_xlen == 32)
     #define MICROPY_NLR_RV32I (1)
     #define MICROPY_NLR_NUM_REGS (MICROPY_NLR_NUM_REGS_RV32I)

@@ -72,7 +72,11 @@
 #elif MICROPY_EMIT_XTENSAWIN
     #define MPY_FEATURE_ARCH (MP_NATIVE_ARCH_XTENSAWIN)
 #elif MICROPY_EMIT_RV32
-    #define MPY_FEATURE_ARCH (MP_NATIVE_ARCH_RV32IMC)
+    #if defined (__riscv_32e)
+        #define MPY_FEATURE_ARCH (MP_NATIVE_ARCH_RV32EMC)
+    #else
+        #define MPY_FEATURE_ARCH (MP_NATIVE_ARCH_RV32IMC)
+    #endif
 #else
     #define MPY_FEATURE_ARCH (MP_NATIVE_ARCH_NONE)
 #endif
@@ -98,6 +102,7 @@ enum {
     MP_NATIVE_ARCH_XTENSA,
     MP_NATIVE_ARCH_XTENSAWIN,
     MP_NATIVE_ARCH_RV32IMC,
+    MP_NATIVE_ARCH_RV32EMC,
     MP_NATIVE_ARCH_DEBUG, // this entry should always be last
 };
 

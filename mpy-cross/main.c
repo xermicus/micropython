@@ -316,6 +316,9 @@ MP_NOINLINE int main_(int argc, char **argv) {
                 } else if (strcmp(arch, "rv32imc") == 0) {
                     mp_dynamic_compiler.native_arch = MP_NATIVE_ARCH_RV32IMC;
                     mp_dynamic_compiler.nlr_buf_num_regs = MICROPY_NLR_NUM_REGS_RV32I;
+                } else if (strcmp(arch, "rv32emc") == 0) {
+                    mp_dynamic_compiler.native_arch = MP_NATIVE_ARCH_RV32EMC;
+                    mp_dynamic_compiler.nlr_buf_num_regs = MICROPY_NLR_NUM_REGS_RV32E;
                 } else if (strcmp(arch, "debug") == 0) {
                     mp_dynamic_compiler.native_arch = MP_NATIVE_ARCH_DEBUG;
                     mp_dynamic_compiler.nlr_buf_num_regs = 0;
